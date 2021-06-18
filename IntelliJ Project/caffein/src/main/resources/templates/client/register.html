@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/client :: setContent(~{this :: content} )}">
+  <th:block th:fragment="content">
+    <h1>회원가입</h1>
+
+    <form sec:authorize="!hasAnyRole('ADMIN', 'CAFE_OWNER', 'MEMBER')" class="register" th:action="@{/register}" th:method="post">
+      <table>
+        <tbody>
+        <tr>
+          <th><label for="email">이메일</label></th>
+          <td><input type="text" name="email" id="email" /></td>
+        </tr>
+        <tr>
+          <th><label for="pw">비밀번호</label></th>
+          <td><input type="password" name="pw" id="pw" /></td>
+        </tr>
+        <tr>
+          <th><label for="repw">비밀번호 재확인</label></th>
+          <td><input type="password" name="repw" id="repw" /></td>
+        </tr>
+        <tr>
+          <th><label for="nickname">닉네임</label></th>
+          <td><input type="text" name="nickname" id="nickname" /></td>
+        </tr>
+        <tr>
+          <th><label for="tel">연락처</label></th>
+          <td><input type="text" name="tel" id="tel" /></td>
+        </tr>
+        <tr>
+          <th><label for="sex">성별</label></th>
+          <td><input type="text" name="sex" id="sex" /></td>
+        </tr>
+        <tr>
+          <th><label for="age">나이</label></th>
+          <td><input type="text" name="age" id="age" /></td>
+        </tr>
+        </tbody>
+      </table>
+      <input type="hidden" name="auth" id="auth" value="ROLE_MEMBER" />
+      <input type="submit" value="등록" />
+    </form>
+    <h3 sec:authorize="hasAnyRole('ADMIN', 'CAFE_OWNER', 'MEMBER')">이미 회원입니다.</h3>
+  </th:block>
+</th:block>
+</html>

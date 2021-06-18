@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/client :: setContent(~{this :: content} )}">
+    <th:block th:fragment="content">
+        <h1>신규 카페 목록</h1>
+
+        <table>
+            <thead>
+            <tr>
+                <th>카페 이름</th>
+                <th>등록일</th>
+                <th>상세 보기</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cafe : ${cafeList}">
+                <td>[[${cafe.name}]]</td>
+                <td>[[${#temporals.format(cafe.rDate, 'yyyy/MM/dd')}]]</td>
+                <td>
+                    <a th:href="@{/cafe/view(cafeId = ${cafe.cafeId})}">
+                        <button type="button">보기</button>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h1>신규 공지 목록</h1>
+
+        <table>
+            <thead>
+            <tr>
+                <th>제목</th>
+                <th>등록일</th>
+                <th>상세 보기</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="dto : ${noticeList}">
+                <td>[[${dto.title}]]</td>
+                <td>[[${#temporals.format(dto.rDate, 'yyyy/MM/dd')}]]</td>
+                <td><a th:href="@{/notice/read(noticeId = ${dto.noticeId})}">
+                    <button type="button">보기</button>
+                </a></td>
+            </tr>
+            </tbody>
+        </table>
+    </th:block>
+</th:block>
+</html>

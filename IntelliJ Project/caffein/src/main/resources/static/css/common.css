@@ -1,0 +1,242 @@
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 700;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 300;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype');
+}
+
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(248, 245, 239, 1);
+
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+body {
+    padding-top: 64px;
+    padding-left: 64px;
+    padding-right: 64px;
+}
+
+a, a:link, a:hover, a:visited, a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, .active {
+    font-weight: 700;
+}
+
+.logo {
+    width: auto;
+    height: 32px;
+}
+
+.bold {
+    font-weight: 400;
+}
+
+.italic {
+    font-style: italic;
+}
+
+button[type=button] {
+    padding: 4px 16px;
+    border-radius: 12.5px;
+    border: 1px solid #000;
+    background-color: #F6F3F2;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 100ms, color 100ms;
+}
+
+button[type=button]:hover {
+    background-color: #000;
+    color: #FFF;
+}
+
+input[type=submit] {
+    padding: 4px 16px;
+    border-radius: 12.5px;
+    border: 1px solid #000;
+    background-color: rgba(255, 216, 11, 1);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 100ms, color 100ms;
+}
+
+input[type=submit]:hover {
+    color: rgba(255, 216, 11, 1);
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.mBtn {
+    font-weight: 700 !important;
+    background-color: rgba(255, 216, 11, 1) !important;
+}
+
+.mBtn:hover {
+    color: rgba(255, 216, 11, 1) !important;
+    background-color: rgba(0, 0, 0, 1) !important;
+}
+
+input[type=text], input[type=password], textarea {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 300;
+}
+
+input[readonly] {
+    background-color: transparent;
+    border: initial;
+    border-radius: initial;
+    color: #A6A6A6;
+}
+
+.section>h1 {
+    display: flex;
+    align-items: center;
+}
+
+.section>h1.contentTitle {
+    width: 600px;
+    margin: 16px auto;
+}
+
+.section>h1>* {
+    flex: none;
+}
+
+.section>h1>span {
+    line-height: 100%;
+    margin-left: auto;
+}
+
+.section>.view, .section>.read, .section>form>.read {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.section>.view th, .section>.read th {
+    width: 200px;
+}
+
+.section>.view td, .section>.read td {
+    text-align: justify;
+}
+
+.section>table, .section>form>table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border-radius: 13.5px;
+    overflow: hidden;
+}
+
+.section>table>tbody>tr:nth-child(2n), .section>form>table>tbody>tr:nth-child(2n) {
+    background-color: #FFFBFA;
+}
+
+.section>table>tbody>tr:nth-child(2n+1), .section>form>table>tbody>tr:nth-child(2n+1) {
+    background-color: #F6F3F2;
+}
+
+.section>table>thead, .section>form>table>thead {
+    background-color: #E8E5E3;
+}
+
+.section>table th, .section>table td,
+.section>form>table th, .section>form>table td {
+    padding: 8px 16px;
+}
+
+.section>.register, .section>.write, .section>.modify {
+    text-align: center;
+}
+
+.section>.register>table, .section>.write>table, .section>.modify>table {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section>.register>table input[type=text], .section>.register>table input[type=password], .section>.register>table textarea
+, .section>.write>table input[type=text], .section>.write>table input[type=password], .section>.write>table textarea
+, .section>.modify>table input[type=text], .section>.modify>table input[type=password], .section>.modify>table textarea
+{
+    display: block;
+    width: 100%;
+}
+
+.section>.register table>tbody>tr>th, .section>.write table>tbody>tr>th, .section>.modify table>tbody>tr>th {
+    width: 200px;
+}
+
+.section>.register table>tbody>tr>td, .section>.write table>tbody>tr>td, .section>.modify table>tbody>tr>td {
+    text-align: justify;
+}
+
+.btnBox {
+    display: flex;
+    width: 400px;
+    margin: 16px auto;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.pagenation {
+    margin: 32px auto;
+}
+
+.pagenation ul, .pagenation li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pagenation ul {
+    display: flex;
+    justify-content: space-between;
+    width: 320px;
+    margin: 0 auto;
+    padding: 8px 16px;
+    background-color: #FFFBFA;
+    border: 1px solid #E8E5E3;
+    border-radius: 17.5px;
+}
+
+.pagenation li:not(.active) a:hover {
+    font-weight: 400;
+}

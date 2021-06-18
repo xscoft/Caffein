@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/client :: setContent(~{this :: content} )}">
+  <th:block th:fragment="content">
+    <h1 class="contentTitle">카페 등록</h1>
+
+    <form class="register" th:action="@{/cafe/register}" th:method="post">
+      <table>
+        <tbody>
+        <tr>
+          <th><label for="name">카페 이름</label></th>
+          <td><input type="text" name="name" id="name" /></td>
+        </tr>
+        <tr>
+          <th><label for="photo">사진</label></th>
+          <td><input type="text" name="photo" id="photo" /></td>
+        </tr>
+        <tr>
+          <th><label for="sido">시 도</label></th>
+          <td><input type="text" name="sido" id="sido" /></td>
+        </tr>
+        <tr>
+          <th><label for="sigugun">시 구 군</label></th>
+          <td><input type="text" name="sigugun" id="sigugun" /></td>
+        </tr>
+        <tr>
+          <th><label for="address">상세 주소</label></th>
+          <td><input type="text" name="address" id="address" /></td>
+        </tr>
+        <tr>
+          <th><label for="tel">연락처</label></th>
+          <td><input type="text" name="tel" id="tel" /></td>
+        </tr>
+        <tr>
+          <th><label for="parking">주차</label></th>
+          <td><input type="text" name="parking" id="parking" /></td>
+        </tr>
+        <tr>
+          <th><label for="time">영업 시간</label></th>
+          <td><input type="text" name="time" id="time" /></td>
+        </tr>
+        <tr>
+          <th><label for="dayoff">휴일</label></th>
+          <td><input type="text" name="dayoff" id="dayoff" /></td>
+        </tr>
+        <tr>
+          <th><label for="menu">메뉴</label></th>
+          <td><input type="text" name="menu" id="menu" /></td>
+        </tr>
+        <tr>
+          <th><label for="location">위치 정보</label></th>
+          <td><input type="text" name="location" id="location" /></td>
+        </tr>
+        <tr>
+          <th><label for="ig">인스타그램</label></th>
+          <td><input type="text" name="ig" id="ig" /></td>
+        </tr>
+        </tbody>
+      </table>
+      <input type="hidden" name="writerMemberId" id="writerMemberId" th:value="${member.memberId}" />
+      <input type="submit" value="등록" />
+    </form>
+  </th:block>
+</th:block>
+</html>

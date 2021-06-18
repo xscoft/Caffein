@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/admin :: setContent(~{this :: content} )}">
+  <th:block th:fragment="content">
+    <h1>회원 수정</h1>
+    <form class="modify" action="/admin/member/modify" method="post">
+      <input type="hidden" name="page" th:value="${requestDTO.page}" />
+      <table>
+        <tbody>
+          <tr>
+            <th><label for="memberId">회원 고유번호</label></th>
+            <td><input type="text" name="memberId" id="memberId" th:value="${dto.memberId}" readonly /></td>
+          </tr>
+          <tr>
+            <th><label for="email">이메일</label></th>
+            <td><input type="text" name="email" id="email" th:value="${dto.email}" readonly /></td>
+          </tr>
+          <tr>
+            <th><label for="nickname">닉네임</label></th>
+            <td><input type="text" name="nickname" id="nickname" th:value="${dto.nickname}" readonly /></td>
+          </tr>
+          <tr>
+            <th><label for="tel">연락처</label></th>
+            <td><input type="text" name="tel" id="tel" th:value="${dto.tel}" readonly /></td>
+          </tr>
+          <tr>
+            <th><label for="sex">성별</label></th>
+            <td><input type="text" name="sex" id="sex" th:value="${dto.sex}" readonly /></td>
+          </tr>
+          <tr>
+            <th><label for="age">나이대</label></th>
+            <td><input type="text" name="age" id="age" th:value="${dto.age}" readonly /></td>
+          </tr>
+          <tr>
+            <th><label for="auth">등급</label></th>
+            <td><input type="text" name="auth" id="auth" th:value="${dto.auth}" /></td>
+          </tr>
+          <tr>
+            <th><label for="rDate">등록일</label></th>
+            <td><input type="text" name="rDate" id="rDate" th:value="${#temporals.format(dto.rDate, 'yyyy/MM/dd HH:mm:ss')}" disabled /></td>
+          </tr>
+          <tr>
+            <th><label for="mDate">수정일</label></th>
+            <td><input type="text" name="mDate" id="mDate" th:value="${#temporals.format(dto.mDate, 'yyyy/MM/dd HH:mm:ss')}" disabled /></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="btnBox">
+        <button type="button" class="modifyBtn">저장하기</button>
+        <button type="button" class="listBtn">회원 목록으로 돌아가기</button>
+      </div>
+
+      <script th:inline="javascript">
+        var actionForm = $("form");
+
+        $(".modifyBtn").click(function() {
+          actionForm.attr("action", "/admin/member/modify")
+                  .attr("method", "post");
+
+          actionForm.submit();
+        });
+
+        $(".listBtn").click(function() {
+          var pageInfo = $("input[name='page']");
+
+          actionForm.empty();
+          actionForm.append(pageInfo);
+          actionForm.attr("action", "/admin/member/list")
+                    .attr("method", "get");
+
+          console.log(actionForm.html());
+          actionForm.submit();
+        });
+      </script>
+    </form>
+  </th:block>
+</th:block>
+</html>

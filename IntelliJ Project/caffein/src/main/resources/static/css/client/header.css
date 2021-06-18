@@ -1,0 +1,52 @@
+.header {
+    box-sizing: content-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100% - 32px);
+    height: 32px;
+    padding: 16px;
+}
+
+.header>a>.title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+    height: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+.header>a>.title>span {
+    padding-top: 2px;
+}
+
+.header>.gnb {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    display: inline-block;
+    height: inherit;
+}
+
+.header>.gnb>ul {
+    display: flex;
+    height: inherit;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-items: center;
+    gap: 16px;
+}
+
+.header>.gnb>ul>li{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.header>.gnb>ul>li>a:hover {
+    font-weight: 700;
+}

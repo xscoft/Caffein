@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/client :: setContent(~{this :: content} )}">
+  <th:block th:fragment="content">
+    <h1 class="contentTitle">리뷰 등록</h1>
+    <form class="write" th:action="@{/review/write}" th:method="post">
+      <table>
+        <tbody>
+        <tr>
+          <th><label for="score">점수</label></th>
+          <td><input type="text" name="score" id="score" /></td>
+        </tr>
+        <tr>
+          <th><label for="title">리뷰 제목</label></th>
+          <td><input type="text" name="title" id="title" /></td>
+        </tr>
+        <tr>
+          <th><label for="content">내용</label></th>
+          <td><input type="text" name="content" id="content" /></td>
+        </tr>
+        <tr>
+          <th><label for="photo">사진</label></th>
+          <td><input type="text" name="photo" id="photo" /></td>
+        </tr>
+        </tbody>
+      </table>
+      <input type="hidden" name="targetCafeId" id="targetCafeId" th:value="${cafeId}" />
+      <input type="hidden" name="writerMemberId" id="writerMemberId" th:value="${member.memberId}" />
+      <input type="submit" value="Submit" />
+    </form>
+  </th:block>
+</th:block>
+</html>

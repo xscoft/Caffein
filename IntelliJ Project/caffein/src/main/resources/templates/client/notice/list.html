@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/client :: setContent(~{this :: content} )}">
+    <th:block th:fragment="content">
+        <h1>공지 목록</h1>
+
+        <table>
+            <thead>
+            <tr>
+                <th>고유번호</th>
+                <th>제목</th>
+                <th>등록일</th>
+                <th>상세 보기</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="dto : ${result.dtoList}">
+                <th>[[${dto.noticeId}]]</th>
+                <td>[[${dto.title}]]</td>
+                <td>[[${#temporals.format(dto.rDate, 'yyyy/MM/dd')}]]</td>
+                <td><a th:href="@{/notice/read(noticeId = ${dto.noticeId}, page = ${result.page})}">
+                    <button type="button">보기</button>
+                </a></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <nav class="pagenation">
+            <ul>
+                <li th:if="${result.prev}">
+                    <a th:href="@{/notice/list(page=${result.start - 1})}">이전</a>
+                </li>
+
+                <li th:class="${result.page == page ? 'active' : ''}" th:each="page : ${result.pageList}">
+                    <a th:href="@{/notice/list(page=${page})}">[[${page}]]</a>
+                </li>
+
+                <li th:if="${result.next}">
+                    <a th:href="@{/notice/list(page=${result.end + 1})}">다음</a>
+                </li>
+            </ul>
+        </nav>
+        <script th:inline="javascript">
+            var msg = [[${msg}]];
+            console.log(msg);
+        </script>
+    </th:block>
+</th:block>
+</html>

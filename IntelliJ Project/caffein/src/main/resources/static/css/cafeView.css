@@ -1,0 +1,64 @@
+ul.reviewList, ul.reviewList ul, ul.reviewList li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul.reviewList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 500px;
+    margin: 16px auto;
+}
+
+ul.reviewList .row>ul>li {
+    display: inline-block;
+}
+
+ul.reviewList .review {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 13.5px;
+    background-color: #FFFBFA;
+    border: 1px solid #E8E5E3;
+    padding: 8px;
+    gap: 4px;
+}
+
+ul.reviewList .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+ul.reviewList .info>* {
+    flex: none;
+}
+
+ul.reviewList .info>.score {
+    font-weight: 700;
+    color: rgb(255, 216, 11);
+    text-shadow:
+    0px 0px 2px #000000;
+    width: 50px;
+    text-align: right;
+    font-size: 24px;
+}
+
+ul.reviewList .info>li:nth-child(2)>span {
+    display: block;
+    width: 100%;
+}
+
+ul.reviewList .info>li:nth-child(2)>.title {
+    font-weight: 400;
+}
+
+ul.reviewList .info>.date {
+    margin-left: auto;
+    font-size: 12px;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/client :: setContent(~{this :: content} )}">
+  <th:block th:fragment="content">
+    <h1 class="contentTitle">공지 상세보기</h1>
+    <table class="read">
+      <tbody>
+      <tr>
+        <th>공지 고유번호</th>
+        <td>[[${dto.noticeId}]]</td>
+      </tr>
+      <tr>
+        <th>제목</th>
+        <td>[[${dto.title}]]</td>
+      </tr>
+      <tr>
+        <th>내용</th>
+        <td>[[${dto.content}]]</td>
+      </tr>
+      <tr>
+        <th>등록일</th>
+        <td>[[${#temporals.format(dto.rDate, 'yyyy/MM/dd HH:mm:ss')}]]</td>
+      </tr>
+      <tr>
+        <th>수정일</th>
+        <td>[[${#temporals.format(dto.mDate, 'yyyy/MM/dd HH:mm:ss')}]]</td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="btnBox">
+      <a th:href="@{/notice/list(page = ${requestDTO.page})}">
+        <button type="button">공지 목록으로 돌아가기</button>
+      </a>
+    </div>
+  </th:block>
+</th:block>
+</html>

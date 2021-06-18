@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/admin :: setContent(~{this :: content} )}">
+  <th:block th:fragment="content">
+    <h1 class="contentTitle">[[${dto.name}]] 수정</h1>
+    <form class="modify" action="/admin/cafe/modify" method="post">
+      <table>
+        <tbody>
+        <tr>
+          <th><label for="cafeId">카페 고유번호</label></th>
+          <td><input type="text" name="cafeId" id="cafeId" th:value="${dto.cafeId}" /></td>
+        </tr>
+        <tr>
+          <th><label for="score">평점</label></th>
+          <td><input type="text" name="score" id="score" th:value="${dto.score}" readonly /></td>
+        </tr>
+        <tr>
+          <th><label for="name">카페 이름</label></th>
+          <td><input type="text" name="name" id="name" th:value="${dto.name}" /></td>
+        </tr>
+        <tr>
+          <th><label for="photo">사진</label></th>
+          <td><input type="text" name="photo" id="photo" th:value="${dto.photo}" /></td>
+        </tr>
+        <tr>
+          <th><label for="sido">시 도</label></th>
+          <td><input type="text" name="sido" id="sido" th:value="${dto.sido}" readonly /></td>
+        </tr>
+        <tr>
+          <th><label for="sigugun">시 구 군</label></th>
+          <td><input type="text" name="sigugun" id="sigugun" th:value="${dto.sigugun}" readonly /></td>
+        </tr>
+        <tr>
+          <th><label for="address">상세 주소</label></th>
+          <td><input type="text" name="address" id="address" th:value="${dto.address}" readonly /></td>
+        </tr>
+        <tr>
+          <th><label for="tel">연락처</label></th>
+          <td><input type="text" name="tel" id="tel" th:value="${dto.tel}" /></td>
+        </tr>
+        <tr>
+          <th><label for="parking">주차</label></th>
+          <td><input type="text" name="parking" id="parking" th:value="${dto.parking}" /></td>
+        </tr>
+        <tr>
+          <th><label for="time">영업 시간</label></th>
+          <td><input type="text" name="time" id="time" th:value="${dto.time}" /></td>
+        </tr>
+        <tr>
+          <th><label for="dayoff">휴일</label></th>
+          <td><input type="text" name="dayoff" id="dayoff" th:value="${dto.dayoff}" /></td>
+        </tr>
+        <tr>
+          <th><label for="menu">메뉴</label></th>
+          <td><input type="text" name="menu" id="menu" th:value="${dto.menu}" /></td>
+        </tr>
+        <tr>
+          <th><label for="location">위치 정보</label></th>
+          <td><input type="text" name="location" id="location" th:value="${dto.location}" readonly /></td>
+        </tr>
+        <tr>
+          <th><label for="ig">인스타그램</label></th>
+          <td><input type="text" name="ig" id="ig" th:value="${dto.ig}" /></td>
+        </tr>
+        <tr>
+          <th><label for="writerMemberId">카페 등록자(고유번호)</label></th>
+          <td><input type="text" name="writerMemberId" id="writerMemberId" th:value="${dto.writerMemberId}" readonly /></td>
+        </tr>
+        <tr>
+          <th><label for="rDate">등록일</label></th>
+          <td><input type="text" name="rDate" id="rDate" th:value="${dto.rDate}" disabled /></td>
+        </tr>
+        <tr>
+          <th><label for="mDate">수정일</label></th>
+          <td><input type="text" name="mDate" id="mDate" th:value="${dto.mDate}" disabled /></td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="btnBox">
+        <button type="button" class="modifyBtn">저장하기</button>
+        <button type="button" class="removeBtn">삭제하기</button>
+        <button type="button" class="listBtn">카페 목록으로 돌아가기</button>
+      </div>
+      <script th:inline="javascript">
+        var actionForm = $("form");
+
+        $(".removeBtn").click(function() {
+          actionForm.attr("action", "/admin/cafe/remove")
+                    .attr("method", "post");
+
+          actionForm.submit();
+        });
+
+        $(".modifyBtn").click(function() {
+          actionForm.attr("action", "/admin/cafe/modify")
+                  .attr("method", "post");
+
+          actionForm.submit();
+        });
+
+        $(".listBtn").click(function() {
+          var pageInfo = $("input[name='page']");
+
+          actionForm.empty();
+          actionForm.append(pageInfo);
+          actionForm.attr("action", "/admin/cafe/list")
+                    .attr("method", "get");
+
+          console.log(actionForm.html());
+          actionForm.submit();
+        });
+      </script>
+    </form>
+  </th:block>
+</th:block>
+</html>

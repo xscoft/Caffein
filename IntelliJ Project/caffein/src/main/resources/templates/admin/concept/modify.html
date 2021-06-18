@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/admin :: setContent(~{this :: content} )}">
+  <th:block th:fragment="content">
+    <h1 class="contentTitle">[[${dto.name}]] 수정</h1>
+    <form class="modify" action="/admin/concept/modify" method="post">
+      <td><input type="hidden" name="page" th:value="${requestDTO.page}" /></td>
+      <table>
+        <tbody>
+          <tr>
+            <th><label for="conceptId">컨셉 고유번호</label></th>
+            <td><input type="text" name="conceptId" id="conceptId" th:value="${dto.conceptId}" readonly /></td>
+          </tr>
+          <tr>
+            <th><label for="name">컨셉 이름</label></th>
+            <td><input type="text" name="name" id="name" th:value="${dto.name}" /></td>
+          </tr>
+          <tr>
+            <th><label for="targetCafeId">대상 카페 고유번호</label></th>
+            <td><input type="text" name="targetCafeId" id="targetCafeId" th:value="${dto.targetCafeId}" readonly /></td>
+          </tr>
+          <tr>
+            <th><label for="rDate">등록일</label></th>
+            <td><input type="text" name="rDate" id="rDate" th:value="${#temporals.format(dto.rDate, 'yyyy/MM/dd HH:mm:ss')}" disabled /></td>
+          </tr>
+          <tr>
+            <th><label for="mDate">수정일</label></th>
+            <td><input type="text" name="mDate" id="mDate" th:value="${#temporals.format(dto.mDate, 'yyyy/MM/dd HH:mm:ss')}" disabled /></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="btnBox">
+        <button type="button" class="modifyBtn">저장하기</button>
+        <button type="button" class="removeBtn">삭제하기</button>
+        <button type="button" class="listBtn">컨셉 목록으로 돌아가기</button>
+      </div>
+      <script th:inline="javascript">
+        var actionForm = $("form");
+
+        $(".removeBtn").click(function() {
+          actionForm.attr("action", "/admin/concept/remove")
+                    .attr("method", "post");
+
+          actionForm.submit();
+        });
+
+        $(".modifyBtn").click(function() {
+          actionForm.attr("action", "/admin/concept/modify")
+                  .attr("method", "post");
+
+          actionForm.submit();
+        });
+
+        $(".listBtn").click(function() {
+          var pageInfo = $("input[name='page']");
+
+          actionForm.empty();
+          actionForm.append(pageInfo);
+          actionForm.attr("action", "/admin/concept/list")
+                    .attr("method", "get");
+
+          console.log(actionForm.html());
+          actionForm.submit();
+        });
+      </script>
+    </form>
+  </th:block>
+</th:block>
+</html>

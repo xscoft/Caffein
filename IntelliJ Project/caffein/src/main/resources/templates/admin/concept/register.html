@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/admin :: setContent(~{this :: content} )}">
+  <th:block th:fragment="content">
+    <h1 class="contentTitle">컨셉 등록</h1>
+    <form class="register" th:action="@{/admin/concept/register}" th:method="post">
+      <table>
+        <tbody>
+          <tr>
+            <th><label for="name">컨셉 이름</label></th>
+            <td><input type="text" name="name" id="name" /></td>
+          </tr>
+          <tr>
+            <th><label for="targetCafeId">대상 카페 고유번호</label></th>
+            <td><input type="text" name="targetCafeId" id="targetCafeId" /></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="btnBox">
+        <input type="submit" value="등록" />
+      </div>
+    </form>
+  </th:block>
+</th:block>
+</html>

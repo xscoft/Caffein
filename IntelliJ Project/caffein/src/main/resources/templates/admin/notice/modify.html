@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/admin :: setContent(~{this :: content} )}">
+  <th:block th:fragment="content">
+    <h1 class="contentTitle">공지 수정</h1>
+    <form class="modify" action="/admin/notice/modify" method="post">
+      <input type="hidden" name="page" th:value="${requestDTO.page}" />
+      <table>
+        <tbody>
+          <tr>
+            <th><label for="noticeId">공지 고유번호</label></th>
+            <td><input type="text" name="noticeId" id="noticeId" th:value="${dto.noticeId}" readonly /></td>
+          </tr>
+          <tr>
+            <th><label for="title">제목</label></th>
+            <td><input type="text" name="title" id="title" th:value="${dto.title}" /></td>
+          </tr>
+          <tr>
+            <th><label for="content">내용</label></th>
+            <td><textarea name="content" id="content">[[${dto.content}]]</textarea></td>
+          </tr>
+          <tr>
+            <th><label for="rDate">등록일</label></th>
+            <td><input type="text" name="rDate" id="rDate" th:value="${#temporals.format(dto.rDate, 'yyyy/MM/dd HH:mm:ss')}" readonly /></td>
+          </tr>
+          <tr>
+            <th><label for="mDate">수정일</label></th>
+            <td><input type="text" name="mDate" id="mDate" th:value="${#temporals.format(dto.mDate, 'yyyy/MM/dd HH:mm:ss')}" readonly /></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="btnBox">
+        <button type="button" class="modifyBtn">저장하기</button>
+        <button type="button" class="removeBtn">삭제하기</button>
+        <button type="button" class="listBtn">공지 목록으로 돌아가기</button>
+      </div>
+
+      <script th:inline="javascript">
+        var actionForm = $("form");
+
+        $(".removeBtn").click(function() {
+          actionForm.attr("action", "/admin/notice/remove")
+                    .attr("method", "post");
+
+          actionForm.submit();
+        });
+
+        $(".modifyBtn").click(function() {
+          actionForm.attr("action", "/admin/notice/modify")
+                  .attr("method", "post");
+
+          actionForm.submit();
+        });
+
+        $(".listBtn").click(function() {
+          var pageInfo = $("input[name='page']");
+
+          actionForm.empty();
+          actionForm.append(pageInfo);
+          actionForm.attr("action", "/admin/notice/list")
+                    .attr("method", "get");
+
+          console.log(actionForm.html());
+          actionForm.submit();
+        });
+      </script>
+    </form>
+  </th:block>
+</th:block>
+</html>

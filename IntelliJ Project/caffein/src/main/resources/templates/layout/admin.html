@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="setContent(content)">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/admin/header.css}" />
+  </head>
+  <body>
+
+  <header class="header">
+    <a th:href="@{/admin/}">
+      <h2 class="title">
+        <img class="logo" th:src="@{/image/logo.png}" />
+        <span>Caffein - 관리자 모드</span>
+      </h2>
+    </a>
+    <nav class="gnb">
+      <ul>
+        <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/logout}">로그아웃</a></li>
+        <li><a th:href="@{/admin/member}">회원 관리</a></li>
+        <li><a th:href="@{/admin/cafe}">카페 관리</a></li>
+        <li><a th:href="@{/admin/review}">리뷰 관리</a></li>
+        <li><a th:href="@{/admin/concept}">컨셉 관리</a></li>
+        <li><a th:href="@{/admin/theme}">테마 관리</a></li>
+        <li><a th:href="@{/admin/notice}">공지 관리</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="section">
+    <th:block th:replace="${content}"></th:block>
+  </section>
+
+  </body>
+</th:block>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/admin :: setContent(~{this :: content} )}">
+  <th:block th:fragment="content">
+    <h1 class="contentTitle">[[${dto.name}]] 상세</h1>
+    <table class="view">
+      <tbody>
+        <tr>
+          <th>컨셉 고유번호</th>
+          <td>[[${dto.conceptId}]]</td>
+        </tr>
+        <tr>
+          <th>컨셉 이름</th>
+          <td>[[${dto.name}]]</td>
+        </tr>
+        <tr>
+          <th>대상 카페 고유번호</th>
+          <td>[[${dto.targetCafeId}]]</td>
+        </tr>
+        <tr>
+          <th>등록일</th>
+          <td>[[${#temporals.format(dto.rDate, 'yyyy/MM/dd HH:mm:ss')}]]</td>
+        </tr>
+        <tr>
+          <th>수정일</th>
+          <td>[[${#temporals.format(dto.mDate, 'yyyy/MM/dd HH:mm:ss')}]]</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="btnBox">
+      <a th:href="@{/admin/concept/modify(conceptId = ${dto.conceptId}, page = ${requestDTO.page})}">
+        <button type="button">수정하기</button>
+      </a>
+      <br />
+      <a th:href="@{/admin/concept/list(page = ${requestDTO.page})}">
+        <button type="button">컨셉 목록으로 돌아가기</button>
+      </a>
+    </div>
+  </th:block>
+</th:block>
+</html>

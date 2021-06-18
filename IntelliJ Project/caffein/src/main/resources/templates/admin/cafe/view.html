@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/admin :: setContent(~{this :: content} )}">
+  <th:block th:fragment="content">
+    <h1 class="contentTitle">[[${dto.name}]] 상세</h1>
+    <table class="view">
+      <tbody>
+        <tr>
+          <th>카페 고유번호</th>
+          <td>[[${dto.cafeId}]]</td>
+        </tr>
+        <tr>
+          <th>평점</th>
+          <td>[[${dto.score}]]</td>
+        </tr>
+        <tr>
+          <th>카페 이름</th>
+          <td>[[${dto.name}]]</td>
+        </tr>
+        <tr>
+          <th>사진</th>
+          <td>[[${dto.photo}]]</td>
+        </tr>
+        <tr>
+          <th>시 도</th>
+          <td>[[${dto.sido}]]</td>
+        </tr>
+        <tr>
+          <th>시 구 군</th>
+          <td>[[${dto.sigugun}]]</td>
+        </tr>
+        <tr>
+          <th>상세 주소</th>
+          <td>[[${dto.address}]]</td>
+        </tr>
+        <tr>
+          <th>연락처</th>
+          <td>[[${dto.tel}]]</td>
+        </tr>
+        <tr>
+          <th>주차</th>
+          <td>[[${dto.parking}]]</td>
+        </tr>
+        <tr>
+          <th>영업 시간</th>
+          <td>[[${dto.time}]]</td>
+        </tr>
+        <tr>
+          <th>휴일</th>
+          <td>[[${dto.dayoff}]]</td>
+        </tr>
+        <tr>
+          <th>메뉴</th>
+          <td>[[${dto.menu}]]</td>
+        </tr>
+        <tr>
+          <th>위치 정보</th>
+          <td>[[${dto.location}]]</td>
+        </tr>
+        <tr>
+          <th>인스타그램</th>
+          <td>[[${dto.ig}]]</td>
+        </tr>
+        <tr>
+          <th>카페 등록자(고유번호)</th>
+          <td>[[${dto.writerMemberId}]]</td>
+        </tr>
+        <tr>
+          <th>카페 등록자(닉네임)</th>
+          <td>[[${dto.writerMemberNickname}]]</td>
+        </tr>
+        <tr>
+          <th>등록일</th>
+          <td>[[${#temporals.format(dto.rDate, 'yyyy/MM/dd HH:mm:ss')}]]</td>
+        </tr>
+        <tr>
+          <th>수정일</th>
+          <td>[[${#temporals.format(dto.mDate, 'yyyy/MM/dd HH:mm:ss')}]]</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="btnBox">
+      <a th:href="@{/admin/cafe/modify(cafeId = ${dto.cafeId}, page = ${requestDTO.page})}">
+        <button type="button">수정하기</button>
+      </a>
+      <a th:href="@{/admin/review/write(cafeId = ${dto.cafeId})}" target="_blank">
+        <button type="button">리뷰 쓰기</button>
+      </a>
+      <a th:href="@{/admin/cafe/list(page = ${requestDTO.page})}">
+        <button type="button">카페 목록으로 돌아가기</button>
+      </a>
+    </div>
+    <ul class="reviewList">
+      <li th:each="reviewDTO : ${result}">
+        <ul class="review">
+          <li class="row">
+            <ul class="info">
+              <li class="score">[[${reviewDTO.score}]]</li>
+              <li><span class="title">[[${reviewDTO.title}]]</span><span class="nickname">[[${reviewDTO.writerMemberNickname}]]</span></li>
+              <li class="date">[[${#temporals.format(reviewDTO.rDate, 'yyyy/MM/dd')}]]</li>
+            </ul>
+          </li>
+          <li class="row photo">[[${reviewDTO.photo}]]</li>
+          <li class="row content">[[${reviewDTO.content}]]</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="btnBox">
+      <a th:href="@{/admin/review/listByCafeId(cafeId = ${dto.cafeId})}" target="_blank">
+        <button type="button">리뷰 더 보기</button>
+      </a>
+    </div>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/cafeView.css}" />
+  </th:block>
+</th:block>
+</html>

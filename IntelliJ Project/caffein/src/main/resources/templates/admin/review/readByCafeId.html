@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/admin :: setContent(~{this :: content} )}">
+  <th:block th:fragment="content">
+    <h1 class="contentTitle">리뷰 상세보기</h1>
+    <form action="/admin/review/remove" method="post">
+      <table class="read">
+        <tbody>
+        <tr>
+          <th>리뷰 고유번호</th>
+          <td>[[${dto.reviewId}]]</td>
+          <input type="hidden" name="reviewId" id="reviewId" th:value="${dto.reviewId}" />
+        </tr>
+        <tr>
+          <th>평점</th>
+          <td>[[${dto.score}]]</td>
+        </tr>
+        <tr>
+          <th>리뷰 제목</th>
+          <td>[[${dto.title}]]</td>
+        </tr>
+        <tr>
+          <th>내용</th>
+          <td>[[${dto.content}]]</td>
+        </tr>
+        <tr>
+          <th>사진</th>
+          <td>[[${dto.photo}]]</td>
+        </tr>
+        <tr>
+          <th>대상 카페 고유번호</th>
+          <td>[[${dto.targetCafeId}]]</td>
+        </tr>
+        <tr>
+          <th>대상 카페 이름</th>
+          <td>[[${dto.targetCafeName}]]</td>
+        </tr>
+        <tr>
+          <th>리뷰 작성자 고유번호</th>
+          <td>[[${dto.writerMemberId}]]</td>
+        </tr>
+        <tr>
+          <th>리뷰 작성자 닉네임</th>
+          <td>[[${dto.writerMemberNickname}]]</td>
+        </tr>
+        <tr>
+          <th>등록일</th>
+          <td>[[${#temporals.format(dto.rDate, 'yyyy/MM/dd HH:mm:ss')}]]</td>
+        </tr>
+        <tr>
+          <th>수정일</th>
+          <td>[[${#temporals.format(dto.mDate, 'yyyy/MM/dd HH:mm:ss')}]]</td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="btnBox">
+      <button type="button" class="removeBtn">삭제하기</button>
+      <a th:href="@{/admin/review/listByCafeId(cafeId = ${dto.targetCafeId}, page = ${requestDTO.page})}">
+        <button type="button">리뷰 목록으로 돌아가기</button>
+      </a>
+      </div>
+      <script th:inline="javascript">
+        var actionForm = $("form");
+
+        $(".removeBtn").click(function() {
+          actionForm.attr("action", "/admin/review/remove")
+                  .attr("method", "post");
+
+          actionForm.submit();
+        });
+      </script>
+    </form>
+  </th:block>
+</th:block>
+</html>
